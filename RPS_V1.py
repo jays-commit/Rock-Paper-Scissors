@@ -19,11 +19,10 @@ while True:
         print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
         playerMove = input().lower()
         if playerMove == 'q':
-            sys.exit() # Quit the program.
+            sys.exit()  # Quit the program.
         if playerMove == 'r' or playerMove == 'p' or playerMove == 's':
-            break # Break out of the player input loop.
+            break  # Break out of the player input loop.
         print('Type one of r, p, s, or q.')
-
 
         # Display what the player chose:
     if playerMove == 'r':
@@ -47,7 +46,7 @@ while True:
 
     if playerMove == computerMove:
         print("Tie")
-        ties = ties +1
+        ties = ties + 1
 
     elif playerMove == "r" and computerMove == "s":
         print("Rock smashes scissors! You win!")
@@ -71,4 +70,6 @@ while True:
         print("Paper covers rock! You win!")
         wins = wins + 1
 
-
+    game_over = input("Play again? (y/n): ")
+    if game_over.lower() != "y":
+        break
