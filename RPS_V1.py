@@ -17,7 +17,7 @@ while True:
     while True:
 
         print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
-        playerMove = input()
+        playerMove = input().lower()
         if playerMove == 'q':
             sys.exit() # Quit the program.
         if playerMove == 'r' or playerMove == 'p' or playerMove == 's':
