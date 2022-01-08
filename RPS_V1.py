@@ -69,7 +69,16 @@ while True:
     elif playerMove == "p" and computerMove == "r":
         print("Paper covers rock! You win!")
         wins = wins + 1
+    print()
 
-    game_over = input("Play again? (y/n): ")
-    if game_over.lower() != "y":
-        break
+    while True:
+
+        game_over = input("Play again? (y/n):\n")
+        if game_over.lower() == "y":
+            break
+        elif game_over.lower() == "n":
+            sys.exit()
+        else:
+            print("please enter y/n\n")
+
+
