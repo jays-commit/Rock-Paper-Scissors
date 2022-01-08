@@ -1,19 +1,37 @@
 import random
 import sys
-import enum
+from enum import IntEnum
 
 wins = 0
 losses = 0
 ties = 0
 
+
+class Action(IntEnum):
+    Rock = 0
+    Paper = 1
+    Scissors = 2
+
+
 print("Rock, Paper Scissors")
+
+def get_user_selection():
+    print("Enter your move: rock[0] paper[1] scissors[3] or quit[9] ")
+    player_move = int(input)
+    selection = player_move
+    action = Action(selection)
+    return action
+
+
+
 
 while True:
 
-    possible_moves = ["rock", "paper", "scissors"]
-    print("Enter your move: rock paper scissors or quit ")
-    player_move = input().lower()
 
+
+    possible_moves = ["rock", "paper", "scissors"]
+    print("Enter your move: rock[0] paper[1] scissors[3] or quit[9] ")
+    player_move = int(input)
     if player_move == "quit":
         sys.exit()
 
