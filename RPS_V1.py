@@ -7,23 +7,35 @@ wins = 0
 ties = 0
 losses = 0
 
-while True: # The main game loop.
-    print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
-    while True: # The player input loop.
+# The main loop for the game
+while True:
+
+    # Game score
+    # print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
+
+    # player input loop
+    while True:
+
         print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
-        playerMove = input()
+        playerMove = input().lower()
+
+        # Quit the program
         if playerMove == 'q':
-            sys.exit() # Quit the program.
+            sys.exit()
+
+        # Break out of the player input loop
         if playerMove == 'r' or playerMove == 'p' or playerMove == 's':
-            break # Break out of the player input loop.
+            break
         print('Type one of r, p, s, or q.')
-    # Display what the player chose:
+
+        # Display what the player chose:
     if playerMove == 'r':
         print('ROCK versus...')
     elif playerMove == 'p':
         print('PAPER versus...')
     elif playerMove == 's':
         print('SCISSORS versus...')
+
     # Display what the computer chose:
     randomNumber = random.randint(1, 3)
     if randomNumber == 1:
@@ -38,26 +50,42 @@ while True: # The main game loop.
 
     if playerMove == computerMove:
         print("Tie")
-        ties = ties +1
+        ties = ties + 1
 
     elif playerMove == "r" and computerMove == "s":
-        print("Win")
+        print("Rock smashes scissors! You win!")
         wins = wins + 1
 
     elif playerMove == "r" and computerMove == "p":
-        print("Loss")
+        print("Paper covers rock! You lose.")
         losses = losses + 1
 
     elif playerMove == "s" and computerMove == "r":
-        print("Loss")
+        print("Rock smashes scissors! You lose.")
         losses = losses + 1
 
     elif playerMove == "s" and computerMove == "p":
-        print("Win")
+        print("Scissors cuts paper! You win!")
         wins = wins + 1
     elif playerMove == "p" and computerMove == "s":
-        print("Loss")
+        print("Scissors cuts paper! You lose.")
         losses = losses + 1
     elif playerMove == "p" and computerMove == "r":
-        print("Win")
+        print("Paper covers rock! You win!")
         wins = wins + 1
+    print()
+
+    while True:
+
+        game_over = input("Play again? (y/n):\n")
+        if game_over.lower() == "y":
+
+            # Game score
+            print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
+            break
+        elif game_over.lower() == "n":
+            sys.exit()
+        else:
+            print("please enter y/n\n")
+
+
