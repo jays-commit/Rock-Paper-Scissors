@@ -17,7 +17,7 @@ print("Rock, Paper Scissors")
 
 
 def player_selection():
-    print("Enter your move: rock[1] paper[2] scissors[3] or quit[9] ")
+    print("Enter your move: rock[1] paper[2] scissors[3]] ")
     player_move = int(input())
     selection = player_move
     action = Action(selection)
@@ -77,20 +77,7 @@ while True:
         continue
 
     computer_action = computer_selection()
-
-    # print(f"{player_action.upper()} versus {computer_action.upper()}")
-    # print(f"You chose {player_action} computer chose {computer_action}\n")
     determine_winner(player_action, computer_action)
-
-
-
-    # player_action = int(input)
-    # if player_action == "quit":
-    #     sys.exit()
-    #
-    #
-
-    # print(f"You chose {player_action} computer chose {computer_action}\n")
 
 
     while True:
@@ -101,6 +88,7 @@ while True:
             # Game score
             print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
             break
+
         elif game_over.lower() == "n":
             sys.exit()
         else:
