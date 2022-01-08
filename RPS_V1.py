@@ -11,17 +11,21 @@ losses = 0
 while True:
 
     # Game score
-    print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
+    # print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
 
     # player input loop
     while True:
 
         print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
         playerMove = input().lower()
+
+        # Quit the program
         if playerMove == 'q':
-            sys.exit()  # Quit the program.
+            sys.exit()
+
+        # Break out of the player input loop
         if playerMove == 'r' or playerMove == 'p' or playerMove == 's':
-            break  # Break out of the player input loop.
+            break
         print('Type one of r, p, s, or q.')
 
         # Display what the player chose:
@@ -75,6 +79,9 @@ while True:
 
         game_over = input("Play again? (y/n):\n")
         if game_over.lower() == "y":
+
+            # Game score
+            print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
             break
         elif game_over.lower() == "n":
             sys.exit()
