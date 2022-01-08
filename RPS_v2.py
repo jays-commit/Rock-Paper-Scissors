@@ -8,58 +8,91 @@ ties = 0
 
 
 class Action(IntEnum):
-    Rock = 0
-    Paper = 1
-    Scissors = 2
+    Rock = 1
+    Paper = 2
+    Scissors = 3
 
 
 print("Rock, Paper Scissors")
 
-def get_user_selection():
-    print("Enter your move: rock[0] paper[1] scissors[3] or quit[9] ")
-    player_move = int(input)
+
+def player_selection():
+    print("Enter your move: rock[1] paper[2] scissors[3] or quit[9] ")
+    player_move = int(input())
     selection = player_move
+    action = Action(selection)
+    return action
+    # choices = [f"{action.name}[{action.value}]" for action in Action]
+    # choices_str = ", ".join(choices)
+    # selection = int(input(f"Enter a choice ({choices_str}): \n"))
+    # action = Action(selection)
+    # return action
+
+
+def computer_selection():
+    selection = random.randint(1, 3)
     action = Action(selection)
     return action
 
 
+def determine_winner(player_action, computer_action):
+    global wins
+    global losses
+    global ties
+
+    print(f"{player_action.name} versus {computer_action.name}")
+    print(f"You chose {player_action.name}, computer chose {computer_action.name}\n")
+
+    if player_action == computer_action:
+        print(f"player and computer both chose {player_action.name} it is a tie ")
+
+    elif player_action == Action.Rock and computer_action == Action.Scissors:
+        print("Rock smashes scissors! You win!")
+        wins = wins + 1
+    elif player_action == Action.Rock and computer_action == Action.Paper:
+        print("Paper covers rock! You lose.")
+        losses = losses + 1
+    elif player_action == Action.Scissors and computer_action == Action.Rock:
+        print("Rock smashes scissors! You lose.")
+        losses = losses + 1
+    elif player_action == Action.Scissors and computer_action == "paper":
+        print("Scissors cuts paper! You win!")
+        wins = wins + 1
+    elif player_action == Action.Paper and computer_action == Action.Scissors:
+        print("Scissors cuts paper! You lose.")
+        losses = losses + 1
+    elif player_action == Action.Paper and computer_action == Action.Rock:
+        print("Paper covers rock! You win!")
+        wins = wins + 1
 
 
 while True:
 
+    try:
+        player_action = player_selection()
+
+    except ValueError as e:
+        range_str = f"[0, {len(Action) }]"
+        print(f"Invalid selection. Enter a value in range {range_str}")
+        continue
+
+    computer_action = computer_selection()
+
+    # print(f"{player_action.upper()} versus {computer_action.upper()}")
+    # print(f"You chose {player_action} computer chose {computer_action}\n")
+    determine_winner(player_action, computer_action)
 
 
-    possible_moves = ["rock", "paper", "scissors"]
-    print("Enter your move: rock[0] paper[1] scissors[3] or quit[9] ")
-    player_move = int(input)
-    if player_move == "quit":
-        sys.exit()
 
-    computer_move = random.choice(possible_moves)
-    print(f"{player_move.upper()} versus {computer_move.upper()}")
-    print(f"You chose {player_move} computer chose {computer_move}\n")
+    # player_action = int(input)
+    # if player_action == "quit":
+    #     sys.exit()
+    #
+    #
 
-    if player_move == computer_move:
-        print(f"player and computer both chose {player_move} it is a tie ")
+    # print(f"You chose {player_action} computer chose {computer_action}\n")
 
-    elif player_move == "rock" and computer_move == "scissors":
-        print("Rock smashes scissors! You win!")
-        wins = wins + 1
-    elif player_move == "rock" and computer_move == "paper":
-        print("Paper covers rock! You lose.")
-        losses = losses + 1
-    elif player_move == "scissors" and computer_move == "rock":
-        print("Rock smashes scissors! You lose.")
-        losses = losses + 1
-    elif player_move == "scissors" and computer_move == "paper":
-        print("Scissors cuts paper! You win!")
-        wins = wins + 1
-    elif player_move == "paper" and computer_move == "scissors":
-        print("Scissors cuts paper! You lose.")
-        losses = losses + 1
-    elif player_move == "paper" and computer_move == "rock":
-        print("Paper covers rock! You win!")
-        wins = wins + 1
+
     while True:
 
         game_over = input("Play again? (y/n):\n")
