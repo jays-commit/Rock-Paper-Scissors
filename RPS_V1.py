@@ -77,11 +77,13 @@ while True:
 
     while True:
 
+        # Game score
+        print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
         game_over = input("Play again? (y/n):\n")
         if game_over.lower() == "y":
 
             # Game score
-            print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
+            # print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
             break
         elif game_over.lower() == "n":
             sys.exit()

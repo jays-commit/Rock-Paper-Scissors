@@ -45,6 +45,7 @@ def determine_winner(player_action, computer_action):
 
     if player_action == computer_action:
         print(f"player and computer both chose {player_action.name} it is a tie ")
+        ties = ties + 1
 
     elif player_action == Action.Rock and computer_action == Action.Scissors:
         print("Rock smashes scissors! You win!")
@@ -82,11 +83,12 @@ while True:
 
     while True:
 
+        # Game score
+        print("\n%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
         game_over = input("Play again? (y/n):\n")
         if game_over.lower() == "y":
-
             # Game score
-            print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
+            # print("%s Wins, %s Losses, %s Ties\n" % (wins, losses, ties))
             break
 
         elif game_over.lower() == "n":
